@@ -1,83 +1,30 @@
 import java.util.Stack;
 
 
-public class Tower 
-{
-	private Disc top;
-	private int numDiscs;
-	
+public class Tower extends Stack<Disc>
+{	
 	public Tower()
 	{
-		top = null;
-		this.numDiscs = 0;
-	}
-	
-	
-	public int getNumDiscs() 
-	{
-		return numDiscs;
-	}
-
-
-	public Disc peek()
-	{
-		return top;
+		super();
 	}
 	
 	public Disc removeDisc()
 	{
-		Disc nodeToReturn = top;
-		if(this.top != null)
-		{
-			top = top.getNextDisc();
-			nodeToReturn.setNextDisc(null);
-			this.numDiscs--;
-			return nodeToReturn;
-		}
-		else
-		{
-			return null;
-		}
+		return this.pop();
 	}
 	
 	public boolean addDisc(Disc d)
 	{
-		if(this.top == null)
+		if(this.size() == 0 || d.getSize() < this.peek().getSize())
 		{
-			top = d;
-			this.numDiscs++;
+			this.push(d);
 			return true;
 		}
-		else if(d.getSize() < this.peek().getSize())
-		{
-			d.setNextDisc(top);
-			top = d;
-			this.numDiscs++;
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return false;
 	}
 	
 	public void display()
 	{
-		System.out.println("*******************");
-		if(this.top == null)
-		{
-			System.out.println("Empty Tower");
-		}
-		else
-		{
-			Disc curr = this.top;
-			do
-			{
-				System.out.println(curr.getSize());
-				curr = curr.getNextDisc();
-			}
-			while(curr != null);
-		}
-		System.out.println("*******************");
+		System.out.println(this.toString());
 	}
 }

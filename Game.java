@@ -28,7 +28,7 @@ public class Game
 				System.out.println("Illegal Move");
 			}
 			//check for winner
-			if(this.theTowers[this.theTowers.length-1].getNumDiscs() == 3)
+			if(this.theTowers[this.theTowers.length-1].size() == 3)
 			{
 				break;
 			}
