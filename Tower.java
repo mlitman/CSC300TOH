@@ -19,6 +19,7 @@ public class Tower
 		if(this.top != null)
 		{
 			top = top.getNextDisc();
+			nodeToReturn.setNextDisc(null);
 		}
 		return nodeToReturn;
 	}
@@ -44,6 +45,7 @@ public class Tower
 	
 	public void display()
 	{
+		System.out.println("*******************");
 		if(this.top == null)
 		{
 			System.out.println("Empty Tower");
@@ -58,6 +60,6 @@ public class Tower
 			}
 			while(curr != null);
 		}
-		
+		System.out.println("*******************");
 	}
 }
