@@ -1,13 +1,24 @@
+import java.util.Stack;
+
 
 public class Tower 
 {
 	private Disc top;
+	private int numDiscs;
 	
 	public Tower()
 	{
 		top = null;
+		this.numDiscs = 0;
 	}
 	
+	
+	public int getNumDiscs() 
+	{
+		return numDiscs;
+	}
+
+
 	public Disc peek()
 	{
 		return top;
@@ -20,8 +31,13 @@ public class Tower
 		{
 			top = top.getNextDisc();
 			nodeToReturn.setNextDisc(null);
+			this.numDiscs--;
+			return nodeToReturn;
 		}
-		return nodeToReturn;
+		else
+		{
+			return null;
+		}
 	}
 	
 	public boolean addDisc(Disc d)
@@ -29,12 +45,14 @@ public class Tower
 		if(this.top == null)
 		{
 			top = d;
+			this.numDiscs++;
 			return true;
 		}
 		else if(d.getSize() < this.peek().getSize())
 		{
 			d.setNextDisc(top);
 			top = d;
+			this.numDiscs++;
 			return true;
 		}
 		else
