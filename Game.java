@@ -40,10 +40,12 @@ public class Game
 	
 	private void show()
 	{
-		for(int i = 0; i < this.theTowers.length; i++)
+		//for(int i = 0; i < this.theTowers.length; i++)
+		int pos = 0;
+		for(Tower t : this.theTowers)
 		{
-			System.out.println("Tower Index: " + i);
-			this.theTowers[i].display();
+			System.out.println("Tower Index: " + pos++);
+			t.display();
 			System.out.println("");
 		}
 	}
